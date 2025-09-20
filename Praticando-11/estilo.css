@@ -1,0 +1,24 @@
+.d1{
+    background-color: lightblue;
+    border-bottom: 20px solid lightcoral;
+    border-right: 20px solid lightcoral;
+    margin-top: 100px;
+}
+.d2{
+    background-color: lightblue;
+    border-top: 20px solid lightcoral;
+    border-left: 20px solid lightcoral;
+}
+img{
+    height: 200px;
+    border: 10px double purple;
+}
+.img1{
+    border: 25px dotted purple;
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+span{
+    border-top: 30px groove darkgreen;
+    border-bottom: 30px groove darkgreen;
+}

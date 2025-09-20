@@ -1,0 +1,42 @@
+body{
+    background-color: lightblue;
+}
+table, td{
+    border: 1px solid red;
+}
+#tab1 td{
+    padding: 30px 60px;
+    text-align: center;
+}
+#tab1 .cor1{
+    background-color: green;
+}
+#tab1 .cor2{
+    background-color: red;
+}
+#tab1 .cor3{
+    background-color: blue;
+}
+#tab1 .cor4{
+    background-color: yellow;
+}
+
+#tab2 .cor{
+    background-color: white;
+}
+.l1{
+    background-color: green;
+}
+.l2{
+    background-color: red;
+}
+.l3{
+    background-color: blue;
+}
+.l4{
+    background-color: yellow;
+}
+#tab2 td{
+    padding: 3px 5px;
+    text-align: center;
+}

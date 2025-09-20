@@ -1,0 +1,54 @@
+header{
+    background-color: rgb(131, 193, 246);
+    padding: 10px 30px;
+} 
+footer{
+    background-color: rgb(181, 181, 181);
+    padding: 10px 30px;
+    text-align: center;
+}
+div{
+    margin: 10px;
+}
+#sec1{
+    background-color: rgb(165, 222, 156);
+    border: 10px solid rgb(255, 255, 255);
+}
+#sec2{
+    background-color: rgb(165, 222, 156);
+    border: 10px solid rgb(255, 255, 255);
+}
+#sec1 .est1{
+    background-color: rgb(255, 255, 255);
+    border: 2px;
+    border-style: solid;
+    border-color: black;
+    margin-left: 20px;
+    margin-right: 20px;
+    padding-left: 5px;
+}
+#sec1 .est2{
+    background-color: rgb(255, 234, 44);
+    border: 2px;
+    padding: 5px 10px;
+    border-style: solid;
+    border-color: rgb(255, 0, 0);
+}
+#sec2 .est1{
+    background-color: rgb(255, 255, 255);
+    border: 2px;
+    border-style: solid;
+    border-color: black;
+    margin-left: 20px;
+    margin-right: 20px;
+    padding-left: 5px;
+}
+.a{
+    color: blue;
+}
+.b{
+    color: green;
+}
+.c{
+    color: red;
+}
