@@ -1,0 +1,43 @@
+body{
+    background-color: rgb(181, 181, 181);
+}
+main{
+    background-color: gray;
+}
+nav{
+    background-color: gray;
+}
+.verm{
+    background-color: red;
+}
+.verd{
+    background-color: green;
+}
+.az{
+    background-color: blue;
+    color: white;
+}
+.am{
+    background-color: yellow;
+}
+.pt{
+    background-color: black;
+    color: white;
+}
+.vm{
+    background-color: rgb(231, 118, 118);
+}
+.vd{
+    background-color: rgb(102, 210, 134);
+}
+.al{
+    background-color: rgb(118, 237, 239);
+    color: white;
+}
+.ao{
+    background-color: rgb(228, 243, 134);
+}
+.po{
+    background-color: rgb(57, 57, 57);
+    color: white;
+}

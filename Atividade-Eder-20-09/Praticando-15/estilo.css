@@ -1,0 +1,31 @@
+body{
+    background-image: url("imagens/Marca_IFSP_2015031.png");
+    background-repeat: no-repeat;
+    background-position: right center;
+    background-size: 200px;
+    min-height: 764px;
+}
+section{
+    background-image: url("imagens/1330892.png");
+    background-repeat: repeat-x;
+    background-position: bottom;
+    background-size: 100px;
+    min-height: 710px;
+}
+table, td{
+    border: 1px solid rgb(0, 0, 0);
+}
+.tamanho{
+    padding: 5px 50px;
+    text-align: center;
+}
+
+th {
+    background-color: #f2f2f2;
+}
+
+.cor {
+    padding: 5px 100px;
+    color: black;
+    text-align: center;
+}
