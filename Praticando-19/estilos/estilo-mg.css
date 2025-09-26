@@ -1,0 +1,29 @@
+body{
+    background-color: #f5f7dd;
+    color: #9fac8d;
+    font-family: "Condiment", cursive;
+    font-weight: 400;
+    font-style: normal;
+    padding-left: 50px;
+    padding-right: 50px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+.container {
+    display: flex;
+    justify-content: center;  
+    gap: 10px;                
+    padding: 10px;
+}
+
+.imagem {
+    flex: 1;
+    max-width: 33%;          
+}
+
+.imagem img {
+    width: 100%;              
+    height: auto;             
+    display: block;
+    border: 2px solid #ddd;  
+}
