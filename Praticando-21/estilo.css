@@ -1,0 +1,68 @@
+body {
+  margin: 0;
+  font-family: 'Lobster', cursive;
+  font-size: 100%;
+}
+
+.e1 {
+  margin-top: 1em;
+  margin-bottom: 1em;
+}
+
+.secao {
+  padding: 2rem;
+}
+
+.verde {
+  background-color: lightgreen;
+  border-bottom: 1rem solid darkblue;
+}
+
+.vermelha {
+  background-color: salmon;
+  border-top: 1rem solid brown;
+}
+
+.verde h2 {
+  color: green;
+  font-size: 1.8rem;
+  margin: 0 0 1rem 0;
+  text-align: left;
+}
+
+.vermelha h2 {
+  color: maroon;
+  font-size: 1.8rem;
+  margin: 0 0 1rem 0;
+  text-align: right;
+}
+
+.imagens {
+  display: flex;
+  gap: 1rem;
+  align-items: flex-end;
+}
+
+.verde .imagens .j1,
+.vermelha .imagens .i4 {
+  height: 2em;
+}
+
+.verde .imagens .j2,
+.vermelha .imagens .i3 {
+  height: 4em;
+}
+
+.verde .imagens .j3,
+.vermelha .imagens .i2 {
+  height: 6em;
+}
+
+.verde .imagens .j4,
+.vermelha .imagens .i1 {
+  height: 8em;
+}
+
+.vermelha .imagens {
+  justify-content: flex-end;
+}

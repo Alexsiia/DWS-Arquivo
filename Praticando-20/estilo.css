@@ -1,0 +1,15 @@
+body{
+    background-color: lightblue;
+}
+.s1{
+    background-color: white;
+    border: 1vw solid black;
+    font-size: 2vw;
+    width: 65%;
+}
+.s2{
+    background-color: white;
+    border: 6px solid black;
+    font-size: 10pt;
+    width: 620px;
+}
