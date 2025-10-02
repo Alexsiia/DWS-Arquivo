@@ -15,12 +15,14 @@ body {
 
 .verde {
   background-color: lightgreen;
+  border-top: 1rem solid darkblue;
   border-bottom: 1rem solid darkblue;
 }
 
 .vermelha {
   background-color: salmon;
   border-top: 1rem solid brown;
+  border-bottom: 1rem solid brown;
 }
 
 .verde h2 {
