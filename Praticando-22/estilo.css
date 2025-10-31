@@ -1,0 +1,44 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: "Sancreek", serif;
+    background-color: #ff7b00;
+}
+
+main {
+    background-color: #b366ff; 
+    margin-left: 5vw;
+    margin-right: 5vw;
+    margin-bottom: 50px;
+    padding: 25px;
+    padding-bottom: 10rem;
+}
+
+h1 {
+    font-size: 2rem;
+    margin-bottom: 2rem;
+    color: #000;
+}
+
+p {
+    font-size: 1rem;
+    line-height: 1.6;
+    text-align: justify;
+    color: #120012;
+}
+img{
+    width: 20vw;
+    margin: 10px;
+    border-radius: 0.5rem;
+}
+.img-right {
+    float: right;
+}
+
+.img-left {
+    float: left;
+}
+
+.clear {
+    clear: both;
+}
