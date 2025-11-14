@@ -3,10 +3,7 @@
 <head>
     <meta charset="UTF-8" />
     <title>Praticando 4 - Mini-game com jQuery</title>
-
-    <!-- jQuery local -->
     <script src="jquery-3.7.1.min.js"></script>
-
     <style>
         html, body {
             margin: 0;
@@ -15,38 +12,30 @@
             font-family: Arial, Helvetica, sans-serif;
             background: #f5f5f5;
         }
-
         .wrap {
             padding: 24px;
         }
-
         h2 {
             margin-top: 0;
         }
-
         .instrucoes {
             margin-bottom: 16px;
         }
-
         .dica {
             margin-top: 12px;
             font-size: 14px;
             color: #555;
         }
-
-        /* Quadrados grandes, abaixo do texto */
         .quadrado {
             width: 100px;
             height: 100px;
             border: 3px solid #000;
-            position: absolute;   /* para andar pela página toda */
+            position: absolute;  
             cursor: pointer;
             box-sizing: border-box;
             transition: box-shadow 0.15s ease;
-            z-index: 1;           /* base */
+            z-index: 1;          
         }
-
-        /* Posições iniciais – abaixo do texto (~260px pra baixo) */
         #q1 {
             background: red;
             top: 260px;
@@ -62,8 +51,6 @@
             top: 260px;
             left: 360px;
         }
-
-        /* Selecionado: destaque e z-index alto pra ficar por cima */
         .selecionado {
             box-shadow: 0 0 0 6px yellow;
             z-index: 9999;
@@ -73,7 +60,6 @@
 <body>
 <div class="wrap">
     <h2>Praticando 4 - Mini-game com jQuery</h2>
-
     <div class="instrucoes">
         <p>Instruções:</p>
         <ol>
@@ -89,57 +75,41 @@
         Dica: clique em um quadrado, depois use W/A/S/D ou as setas. Clique novamente no mesmo quadrado para resetar a posição.
     </p>
 </div>
-
-<!-- quadrados absolutos na página (abaixo do texto) -->
 <div class="quadrado" id="q1"></div>
 <div class="quadrado" id="q2"></div>
 <div class="quadrado" id="q3"></div>
-
 <script>
     $(function () {
         const $quadrados = $('.quadrado');
-
         let quadradoSelecionado = null;
-
-        // Guarda posição original de cada quadrado
         const posicoesOriginais = {};
-
         $quadrados.each(function () {
             const $q = $(this);
             const id = $q.attr('id');
             const pos = $q.position();
             posicoesOriginais[id] = { top: pos.top, left: pos.left };
         });
-
         function mandarParaCentro($q) {
             const winWidth  = $(window).width();
             const winHeight = $(window).height();
             const qWidth    = $q.outerWidth();
             const qHeight   = $q.outerHeight();
-
             const centroLeft = (winWidth - qWidth) / 2;
             const centroTop  = (winHeight - qHeight) / 2;
-
             $q.css({
                 left: centroLeft,
                 top: centroTop
             });
         }
-
-        // Clique nos quadrados
         $quadrados.on('click', function () {
             const $q = $(this);
             const id = $q.attr('id');
-
-            // Nenhum selecionado ainda
             if (!quadradoSelecionado) {
                 quadradoSelecionado = id;
                 $q.addClass('selecionado');
-                mandarParaCentro($q);  // manda pro meio
+                mandarParaCentro($q); 
                 return;
             }
-
-            // Clicou no MESMO quadrado → volta pro original e desmarca
             if (quadradoSelecionado === id) {
                 const posOriginal = posicoesOriginais[id];
                 $q.css({
@@ -150,56 +120,32 @@
                 quadradoSelecionado = null;
                 return;
             }
-
-            // Já tem outro selecionado
             alert('Atenção! Já há um quadrado selecionado, desselecione-o antes de selecionar outro.');
         });
-
-        // Movimentação com WASD + SETAS
         $(document).on('keydown', function (e) {
             if (!quadradoSelecionado) return;
 
             const $q = $('#' + quadradoSelecionado);
-            const passo = 20;  // passo de movimento
-
+            const passo = 20; 
             let top  = parseInt($q.css('top'), 10);
             let left = parseInt($q.css('left'), 10);
 
             const tecla = e.key.toLowerCase();
-            const code  = e.key; // para setas: 'ArrowUp', 'ArrowDown', ...
-
-            // CIMA: W ou seta pra cima
+            const code  = e.key;
             if (tecla === 'w' || code === 'ArrowUp') {
                 top -= passo;
             }
-            // BAIXO: S ou seta pra baixo
             else if (tecla === 's' || code === 'ArrowDown') {
                 top += passo;
             }
-            // ESQUERDA: A ou seta pra esquerda
             else if (tecla === 'a' || code === 'ArrowLeft') {
                 left -= passo;
             }
-            // DIREITA: D ou seta pra direita
             else if (tecla === 'd' || code === 'ArrowRight') {
                 left += passo;
             } else {
-                return; // outra tecla, ignora
+                return; 
             }
-
-            // Se quiser travar dentro da tela, descomente:
-            /*
-            const winWidth  = $(window).width();
-            const winHeight = $(window).height();
-            const qWidth    = $q.outerWidth();
-            const qHeight   = $q.outerHeight();
-
-            if (top < 0) top = 0;
-            if (left < 0) left = 0;
-            if (top + qHeight > winHeight) top = winHeight - qHeight;
-            if (left + qWidth > winWidth) left = winWidth - qWidth;
-            */
-
             $q.css({ top, left });
         });
     });
