@@ -1,0 +1,172 @@
+<!-- Salve como: praticando3.html -->
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8" />
+    <title>Praticando 5 - JavaScript - Cores (click e mouse)</title>
+    <script src="jquery-3.7.1.min.js"></script>
+    <style>
+        :root {
+            --bg-inicial: #ffffff; /* branco */
+            --borda: #222;
+        }
+        html, body {
+            height: 100%;
+            margin: 0;
+            font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+            background: var(--bg-inicial);
+        }
+        .wrap {
+            min-height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 16px;
+            padding: 24px;
+            box-sizing: border-box;
+        }
+        .linha {
+            display: flex;
+            gap: 12px;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        .caixa {
+            width: 120px;
+            height: 48px;
+            border: 2px solid var(--borda);
+            border-radius: 8px;
+            cursor: pointer;
+            transition: transform 0.08s ease;
+        }
+        .caixa:hover { transform: translateY(-2px); }
+        .btn-reset {
+            padding: 10px 16px;
+            border-radius: 8px;
+            border: 1px solid #888;
+            background: #e9ecef;
+            cursor: pointer;
+        }
+        .preview {
+            position: fixed;
+            inset: 0;
+            display: grid;
+            place-items: center;
+            pointer-events: none;
+            font-size: 28px;
+            font-weight: 600;
+            color: rgba(0,0,0,0.6);
+            opacity: 0;
+            transition: opacity 0.15s ease;
+            text-shadow: 0 1px 2px rgba(255,255,255,0.7);
+        }
+        .preview.mostrar { opacity: 1; }
+        .msg {
+            position: fixed;
+            left: 50%;
+            bottom: 24px;
+            transform: translateX(-50%);
+            background: rgba(40, 40, 40, 0.92);
+            color: #fff;
+            padding: 10px 14px;
+            border-radius: 8px;
+            font-size: 14px;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.2s ease, transform 0.2s ease;
+        }
+        .msg.mostrar {
+            opacity: 1;
+            transform: translateX(-50%) translateY(-4px);
+        }
+    </style>
+</head>
+<body>
+    <div class="wrap">
+        <h2>Praticando 5 - Cores (click e mouse)</h2>
+        <div class="linha">
+            <div class="caixa" data-cor="#e53935" style="background:#e53935"></div>
+            <div class="caixa" data-cor="#43a047" style="background:#43a047"></div>
+            <div class="caixa" data-cor="#1e88e5" style="background:#1e88e5"></div>
+            <div class="caixa" data-cor="#fdd835" style="background:#fdd835"></div>
+            <div class="caixa" data-cor="#d81b60" style="background:#d81b60"></div>
+            <button id="btn-reset" class="btn-reset">Reset</button>
+        </div>
+    </div>
+    <div id="preview" class="preview">Preview</div>
+    <div id="msg" class="msg"></div>
+    <script>
+        $(function () {
+            const $corpo   = $('body');
+            const $caixas  = $('.caixa');
+            const $preview = $('#preview');
+            const $btnReset = $('#btn-reset');
+            const $msg     = $('#msg');
+            const STORAGE_KEY = 'bgColor';
+            function aplicarFundo(cor) {
+                $corpo.css('background', cor);
+            }
+            function showMessage(texto) {
+                $msg.text(texto).addClass('mostrar');
+                const data = $msg.data() || {};
+                if (data.timeoutId) {
+                    clearTimeout(data.timeoutId);
+                }
+                const id = setTimeout(function () {
+                    $msg.removeClass('mostrar');
+                    $msg.removeData('timeoutId');
+                }, 1400);
+                $msg.data('timeoutId', id);
+            }
+            function getSavedColor() {
+                try {
+                    return localStorage.getItem(STORAGE_KEY) || null;
+                } catch (e) {
+                    return null;
+                }
+            }
+            function saveColor(cor) {
+                try {
+                    localStorage.setItem(STORAGE_KEY, cor);
+                } catch (e) {}
+            }
+            function clearSavedColor() {
+                try {
+                    localStorage.removeItem(STORAGE_KEY);
+                } catch (e) {}
+            }
+            let corPadrao = '#ffffff';
+            const corSalva = getSavedColor();
+            if (corSalva) {
+                corPadrao = corSalva;
+            }
+            aplicarFundo(corPadrao);
+            $caixas.each(function () {
+                const $cx = $(this);
+                const cor = $cx.data('cor'); 
+                $cx.on('mouseenter', function () {
+                    aplicarFundo(cor);
+                    $preview.addClass('mostrar');
+                });
+                $cx.on('mouseleave', function () {
+                    aplicarFundo(corPadrao);
+                    $preview.removeClass('mostrar');
+                });
+                $cx.on('click', function () {
+                    corPadrao = cor;
+                    aplicarFundo(corPadrao);
+                    saveColor(corPadrao);
+                    showMessage('Cor definida e salva como padrão!');
+                });
+            });
+            $btnReset.on('click', function () {
+                corPadrao = '#ffffff';
+                aplicarFundo(corPadrao);
+                clearSavedColor();
+                $preview.removeClass('mostrar');
+                showMessage('Plano de fundo resetado para branco.');
+            });
+        });
+    </script>
+</body>
+</html>
