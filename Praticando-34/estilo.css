@@ -1,0 +1,13 @@
+body {
+    background: #f5f6f7;
+}
+.card {
+    border-radius: 10px;
+}
+#alert-area .alert {
+    margin-bottom: 10px;
+}
+.btn-outline-danger {
+    padding: 2px 8px;
+    font-size: 0.85rem;
+}
